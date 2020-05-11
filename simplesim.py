@@ -192,25 +192,25 @@ class gui():
     
     def __init__(self):
     
-        #try:
-        from google.colab import drive
-        drive.mount('/content/drive')
+        try:
+            from google.colab import drive
+            drive.mount('/content/drive')
 
-        #Make app and model folder for persistent model storage
-        if(not os.path.isdir("/content/drive/My Drive/SimpleSim")):
-            os.mkdir("/content/drive/My Drive/SimpleSim")
-        if(not os.path.isdir("/content/drive/My Drive/SimpleSim/models")):  
-            os.mkdir("/content/drive/My Drive/SimpleSim/models")
+            #Make app and model folder for persistent model storage
+            if(not os.path.isdir("/content/drive/My Drive/SimpleSim")):
+                os.mkdir("/content/drive/My Drive/SimpleSim")
+            if(not os.path.isdir("/content/drive/My Drive/SimpleSim/models")):  
+                os.mkdir("/content/drive/My Drive/SimpleSim/models")
             
-        os.system("cp -r /content/SimpleSim/models/*.json /content/drive/My\ Drive/SimpleSim/models/")
+            os.system("cp -r /content/SimpleSim/models/*.json /content/drive/My\ Drive/SimpleSim/models/")
 
-        #Change to drive directory for persistent storage
-        os.chdir("/content/drive/My Drive/SimpleSim/")
+            #Change to drive directory for persistent storage
+            os.chdir("/content/drive/My Drive/SimpleSim/")
 
-        clear_output()
-        IN_COLAB = True
-        #except:
-        #  IN_COLAB = False    
+            clear_output()
+            self.IN_COLAB = True
+        except:
+          self.IN_COLAB = False    
         
         self.response = None                
         
@@ -338,7 +338,7 @@ class gui():
         save_name = "".join(self.wn.value.split(" ")) + ".json"
         save_path = 'models/%s'%(save_name)
                 
-        if(os.path.isfile(save_path)):
+        if(os.path.isfile(save_path) or self.IN_COLAB):
             self.get_response("finish_save()")
         else:
             self.finish_save()        
