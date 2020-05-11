@@ -10,12 +10,6 @@ from IPython.display import display, Javascript
 import time
 import asyncio
 
-try:
-  import google.colab
-  IN_COLAB = True
-except:
-  IN_COLAB = False
-
 class equation():
     def __init__(self, eq_str):
         
@@ -198,6 +192,13 @@ class gui():
     
     def __init__(self):
     
+        try:
+          import google.colab
+          from google.colab import drive
+          drive.mount('/content/drive')
+          IN_COLAB = True
+        except:
+          IN_COLAB = False    
         
         if(IN_COLAB):
             pass
