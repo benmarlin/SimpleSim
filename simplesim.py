@@ -368,17 +368,15 @@ class gui():
 
 
     def get_response(self, callback):
-        
+        global g
         js = """var retVal = confirm('This model file already exists. Do you want to replace it?')
                 var kernel = IPython.notebook.kernel;
                 if(retVal==true){
-                    var pyCommand = "global thisgui; g.%s";
+                    var pyCommand = "g.%s";
                     kernel.execute(pyCommand);
                 }
             """%callback
-                
-        global thisgui
-        thisgui = self
+        g= self
         display(Javascript(js))
         
     def load(self, file_name):
