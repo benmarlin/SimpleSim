@@ -190,24 +190,30 @@ class simulator():
         
 class gui():
     
-    def __init__(self):
+    def __init__(self, persistent=True):
     
         try:
             from google.colab import drive
-            drive.mount('/content/drive')
-
-            #Make app and model folder for persistent model storage
-            if(not os.path.isdir("/content/drive/My Drive/SimpleSim")):
-                os.mkdir("/content/drive/My Drive/SimpleSim")
-            if(not os.path.isdir("/content/drive/My Drive/SimpleSim/models")):  
-                os.mkdir("/content/drive/My Drive/SimpleSim/models")
             
-            os.system("cp -r /content/SimpleSim/models/*.json /content/drive/My\ Drive/SimpleSim/models/")
+            if(persistent):            
+                display("SimpleSim needs to connect to Goolge Drive for persistent storage on Google Colab.")
+                drive.mount('/content/drive')
 
-            #Change to drive directory for persistent storage
-            os.chdir("/content/drive/My Drive/SimpleSim/")
+                #Make app and model folder for persistent model storage
+                if(not os.path.isdir("/content/drive/My Drive/SimpleSim")):
+                    os.mkdir("/content/drive/My Drive/SimpleSim")
+                if(not os.path.isdir("/content/drive/My Drive/SimpleSim/models")):  
+                    os.mkdir("/content/drive/My Drive/SimpleSim/models")
+            
+                os.system("cp -r /content/SimpleSim/models/*.json /content/drive/My\ Drive/SimpleSim/models/")
 
-            clear_output()
+                #Change to drive directory for persistent storage
+                os.chdir("/content/drive/My Drive/SimpleSim/")
+
+                clear_output()
+            else:
+                os.chdir("/content/SimpleSim/")
+                
             self.IN_COLAB = True
         except:
             self.IN_COLAB = False    
