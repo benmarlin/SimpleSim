@@ -198,10 +198,9 @@ class gui():
 
         #Make app and model folder for persistent model storage
         if(not os.path.isdir("/content/drive/My Drive/SimpleSim")):
-
-        os.mkdir("/content/drive/My Drive/SimpleSim")
+            os.mkdir("/content/drive/My Drive/SimpleSim")
         if(not os.path.isdir("/content/drive/My Drive/SimpleSim/models")):  
-        os.mkdir("/content/drive/My Drive/SimpleSim/models")
+            os.mkdir("/content/drive/My Drive/SimpleSim/models")
         !cp -r /content/SimpleSim/models/*.json /content/drive/My\ Drive/SimpleSim/models/
 
         #Change to drive directory for persistent storage
