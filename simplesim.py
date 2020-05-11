@@ -193,19 +193,24 @@ class gui():
     def __init__(self):
     
         try:
-          import google.colab
           from google.colab import drive
           drive.mount('/content/drive')
+          
+          #Make app and model folder for persistent model storage
+          if(not os.path.isdir("/content/drive/My Drive/SimpleSim")):
+            os.mkdir("/content/drive/My Drive/SimpleSim")
+          if(not os.path.isdir("/content/drive/My Drive/SimpleSim/models")):  
+            os.mkdir("/content/drive/My Drive/SimpleSim/models")
+            !cp -r /content/SimpleSim/models/*.json /content/drive/My\ Drive/SimpleSim/models/
+          
+          #Change to drive directory for persistent storage
+          os.chdir("/content/drive/My Drive/SimpleSim/")
+          
+          clear_output()
           IN_COLAB = True
         except:
           IN_COLAB = False    
         
-        if(IN_COLAB):
-            pass
-        else:
-            if(not os.path.isdir("models")):
-                os.mkdir("models")
-
         self.response = None                
         
         self.model_list = self.list_models()
