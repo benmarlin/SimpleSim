@@ -210,7 +210,7 @@ class gui():
             clear_output()
             self.IN_COLAB = True
         except:
-          self.IN_COLAB = False    
+            self.IN_COLAB = False    
         
         self.response = None                
         
@@ -338,7 +338,7 @@ class gui():
         save_name = "".join(self.wn.value.split(" ")) + ".json"
         save_path = 'models/%s'%(save_name)
                 
-        if(os.path.isfile(save_path) or self.IN_COLAB):
+        if(os.path.isfile(save_path) and not self.IN_COLAB):
             self.get_response("finish_save()")
         else:
             self.finish_save()        
