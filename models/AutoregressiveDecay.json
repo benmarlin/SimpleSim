@@ -1,0 +1,1 @@
+{"name": "Autoregressive Decay", "init": "x[0]=10", "dynamics": "x[t]=0.9*x[t-1]", "titles": "Simulation Output", "steps": 100, "plot_vars": "x"}

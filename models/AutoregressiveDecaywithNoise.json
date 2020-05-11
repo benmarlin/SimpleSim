@@ -1,0 +1,1 @@
+{"name": "Autoregressive Decay with Noise", "init": "x[0] = 5\ny[0] = 0", "dynamics": "y[t] = n_eps/10 \nx[t] = 0.95*x[t-1] + y[t]", "titles": "Simulation Output", "steps": 100, "plot_vars": "x,y"}

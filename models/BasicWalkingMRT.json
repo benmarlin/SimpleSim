@@ -1,0 +1,1 @@
+{"name": "Basic Walking MRT", "init": "S[0] = 2000\nM[0] = 0.1\nA[0] = 0", "dynamics": "A[t] = (u_eps>0.5)\nM[t] = 0.8*M[t-1] + 0.2*A[t]\nS[t] = 1000 + 8000*M[t] + 1000*u_eps", "titles": "Steps\nMotivation", "steps": 100, "plot_vars": "S,A\nM,A"}

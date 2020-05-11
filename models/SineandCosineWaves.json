@@ -1,0 +1,1 @@
+{"name": "Sine and Cosine Waves", "init": "x[0]=sin(0)\ny[0]=cos(0)", "dynamics": "x[t]=sin(pi*t/50)\ny[t]=cos(pi*t/50)", "titles": "Sine and Cosine Waves", "steps": 200, "plot_vars": "x,y"}
